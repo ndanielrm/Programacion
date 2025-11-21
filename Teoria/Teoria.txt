@@ -1,0 +1,120 @@
+Programacion Orientada a Objetos
+|->Encapsulamiento
+|->Polimorfismo 
+|->Herencia
+|->UML
+
+¿QUÉ SON ATRIBUTOS?
+En Java, los atributos son variables que se definen dentro de una clase y representan las características o propiedades de un objeto.
+
+¿QUÉ SON MÉTODOS?
+Son las cosas que un objeto puede hacer
+
+¿QUÉ SON LOS CONSTRUCTORES?
+Cuando creas un objeto con la palabra clave new, Java llama automáticamente al constructor de la clase para construir (inicializar) ese objeto. Se llama siempre igual que la clase, no retorna nada, ni siquiera void.
+
+¿QUÉ ES LA HERENCIA?
+Herencia significa que una clase hereda los atributos (variables) y métodos (funciones) de otra clase.
+
+ENCAPSULAMIENTO
+El **encapsulamiento** es uno de los pilares de la Programación Orientada a Objetos.
+Consiste en **proteger los datos internos de una clase** y permitir su acceso solo a través
+de métodos públicos llamados **getters y setters**.
+- **Objetivo**: evitar accesos indebidos a atributos, dar seguridad y control.
+- **Getter**: devuelve el valor de un atributo privado.
+- **Setter**: modifica el valor de un atributo privado, aplicando validaciones si es necesario.
+class CuentaBancaria {
+	private String titular;
+ 	private double saldo;
+ 	// Constructor
+ 	public CuentaBancaria(String titular, double saldoInicial) {
+ 	this.titular = titular;
+	if (saldoInicial > 0) {
+ 		this.saldo = saldoInicial;
+ 	}
+ }
+ // Getter
+ public double getSaldo() {
+ 	return saldo;
+ }
+ // Setter con validación
+ public void depositar(double monto) {
+ 	if (monto > 0) {
+		saldo += monto;
+ 	}
+ }
+ public void retirar(double monto) {
+ 	if (monto > 0 && monto <= saldo) {
+ 	saldo -= monto;
+ 	}
+ }
+ public String getTitular() {
+ 	return titular;
+// Uso
+CuentaBancaria cuenta = new CuentaBancaria("Ana", 500);
+cuenta.depositar(200);
+cuenta.retirar(100);
+System.out.println(cuenta.getTitular() + " tiene saldo: " + cuenta.getSaldo());
+
+
+POLIMORFISMO
+
+El **polimorfismo** permite que un mismo método tenga diferentes comportamientos
+dependiendo del objeto que lo invoque.
+class Animal {
+	void sonido() {
+ 	System.out.println("Sonido genérico");
+	}
+}
+class Perro extends Animal {
+	@Override
+ 	void sonido() {
+ 	System.out.println("Guau!");
+ 	}
+}
+class Gato extends Animal {
+	@Override
+ 	void sonido() {
+ 	System.out.println("Miau!");
+ 	}
+}
+// Uso
+Animal a1 = new Perro();
+Animal a2 = new Gato();
+a1.sonido(); // Guau!
+a2.sonido(); // Miau!
+
+
+CLASES ABSTRACTAS E INTERFACES
+
+- **Clases abstractas**: no se pueden instanciar, sirven de base para otras clases. Pueden tener
+métodos implementados y abstractos.
+- **Interfaces**: definen métodos sin implementación. Una clase puede implementar varias
+interfaces.
+abstract class Figura {
+	abstract double area();
+}
+class Circulo extends Figura {
+	double radio;
+Circulo(double r) { radio = r; }
+ @Override
+ double area() {
+ return Math.PI * radio * radio;
+	}
+}
+interface Dibujable {
+	void dibujar();
+}
+class Cuadrado implements Dibujable {
+	int lado;
+ 	Cuadrado(int l) { lado = l; }
+ 	@Override
+ 	public void dibujar() {
+ 	System.out.println("Dibujando cuadrado de lado " + lado);
+ 	}
+}
+// Uso
+Figura f = new Circulo(5);
+System.out.println("Área: " + f.area());
+Dibujable d = new Cuadrado(4);
+d.dibujar();

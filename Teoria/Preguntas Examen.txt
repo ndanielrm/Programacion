@@ -1,0 +1,62 @@
+1)  Analice el siguiente código Java. 
+    Preste especial atención a las firmas de los métodos en la clase Auto y determine cuál es una 
+    Sobreescritura válida y cuál no lo es. Si en el método main intentamos compilar y ejecutar ambas 
+    líneas de código comentadas a continuación: Cuál es el resultado correcto del intento de compilación y, 
+    si compila, la salida de la LIamada A?
+    Llamada A: Produce la salida "Auto detenido.", demostrando el polimorfismo en tiempo de ejecución.
+     La Llamada B fallaría en compilación.
+
+    class Transporte {
+    public void viajar() {
+        System.out.println("Transporte en movimiento.");
+    }
+}
+
+class Auto extends Transporte {
+    // Método 1 - NO es una sobreescritura, es una sobrecarga
+    public void viajar(int velocidad) {
+        System.out.println("Auto viajando a " + velocidad + " km/h.");
+    }
+
+    // Método 2 - SÍ es una sobreescritura válida
+    public void viajar() {
+        System.out.println("Auto detenido.");
+    }
+}
+
+public class TestDrive {
+    public static void main(String[] args) {
+        Transporte vehiculo = new Auto();
+        vehiculo.viajar();       // Llamada A
+        // vehiculo.viajar(100); // Llamada B
+    }
+}
+
+2)  Analice el siguiente código Java. Observe la interacción entre la constante (VALOR_BASE),
+    los métodos predeterminados (default) y la implementación en la clase concreta ClaseAvanzada.
+    Cuál es el resultado correcto al intentar compilar y luego ejecutar Ia LLAMADA CLAVE (obj.obtenerlnfo0)?
+    2. Las declaraciones 1, 2 y 3 compilan correctamente. La Declaración 4 no compila porque,
+    sintácticamente, una interface solo puede usar la palabra clave extends para heredar de otras
+    interfaces, y no puede usar implements.
+
+3) ¿QUE RESULTADO SE OBTIENE AL SOBREESCRIBIR toString EN ESTUDIANTES?
+    Se reemplaza el comportamiento de toString de Persona, pero usando también el de Persona
+     a través de super.toString()
+
+4)  Linea 1: 5
+    Linea 2: 7
+    Linea 3: 7
+    Linea 4: 6
+    Linea 5: 70
+    Valor Final del Contador 6
+
+5)  ¿CUÁL DE LAS SIGUIENTES DECISIONES DE DISEÑO, AL IMPLEMENTAR LA CLASE C, VIOLA O IGNORA DIRECTAMENTE
+     EL PRINCIPIO DE ENCAPSULAMIENTO QUE SE MUESTRA EN EL DIAGRAMA, O COMPROMETE LOS DATOS SENSIBLES DE 
+     CLASE QUE EL ENCAPSULAMIENTO BUSCA PROTEGER?
+     2. Declarar el atributo size de la ClaseC como public int size;
+     , permitiendo que otras clases lo accedan y modifiquen directamente sin pasar por métodos.
+
+6)  ¿CUÁL DE LAS SIGUIENTES AFIRMACIONES DESCRIBE LA FORMA CORRECTA Y COMPLETA DE DISEÑO?
+    La clase falla como JavaBean porque el atributo version es final y no tiene un método setVersion().
+    Para corregirlo, se debe eliminar la palabra clave final del atributo version y agregar
+    public void setVersion(String v).

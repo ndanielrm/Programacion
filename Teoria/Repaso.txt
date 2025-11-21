@@ -1,0 +1,122 @@
+Pistas para el Parcial 
+
+¿Cuál es la estructura básica de un programa en Java?
+    ->public static void main(String[] args)  
+
+¿Qué error tiene este código?
+public class Test { 
+    public void main(String[] args) { 
+        System.out.println("Hola"); 
+    } 
+} 
+    ->Falta el "static" 
+
+¿Qué imprime este método? 
+public static int suma(int a, int b) { 
+    return a + b; 
+} 
+System.out.println(suma(3, 4)); 
+    ->Imprime "7" ya que al poner "suma()" lo que ponemos entre parentesis son los datos que le pasamos (en este caso a y b)
+
+El ámbito de una variable local se limita a: 
+    ->El bloque o metodo que lo declara
+
+¿Qué sentencia termina inmediatamente un bucle? 
+    ->La palabra reservada "break"
+
+¿Qué imprime este código? 
+for(int i=0; i<3; i++) { 
+    if(i == 1) continue; 
+        System.out.print(i); 
+} 
+    ->Imprime "02" ya que al comprobarse que i==1 se ejecuta el "continue;" 
+      lo que hace que se salte el imprimir 
+
+¿Qué operador lógico se usa en if? 
+    ->||(or) y && (and)
+
+¿Cómo se declara un array de enteros en Java? 
+    ->int [] numeros; y tambien int numeros[];
+
+¿Qué imprime este código? 
+int[] x = {2, 5, 8}; 
+System.out.println(x[1]); 
+    ->Imprime el numero "5" ya que x[0]=2; x[1]=5; x[2]=8;
+
+¿Qué error tiene? 
+int[] arr = new int[3]; 
+arr[3] = 10; 
+    ->Excepción en tiempo de ejecución  (índice fuera de rango). Ya que arr[2] es el valor maximo 
+      (porque al declarar arr[3] tenemos desde el 0 al 2)
+
+¿Recorre el array este for-each? 
+for(int n : arr) { 
+    System.out.println(n); 
+} 
+    ->Si lo recorre, al poner ´for(variable : array)´ estamos recorriendo todo el array
+
+¿Cómo crear un String? 
+    ->String s = "Hola";  String s = new String("Hola");
+
+¿Qué imprime? 
+String a = "Hola"; 
+String b = "hola"; 
+System.out.println(a.equalsIgnoreCase(b)); 
+    ->Imprime el valor True, porque al poner .equalsIgnoreCase estamos diciendo que ignoramos
+      si hay mayusculas o minusculas, al solo poner .equals nos devolveria un valor falso
+
+¿Qué hace este código? 
+String s = "Java"; 
+System.out.println(s.length()); 
+    ->Imprime "4", porque le estamos pidiendo que imprima la longitud de la cadena
+
+¿Cuál de estos fragmentos de código imprime la subcadena "Pro"? 
+A) 
+String t = "Programar"; 
+System.out.println(t.substring(1,4)); 
+B) 
+String t = "Programar"; 
+System.out.println(t.substring(0,3)) 
+    ->Con la op b
+
+¿Qué es un objeto en Java? 
+    ->Es una instancia de una clase
+
+¿Qué hace un constructor? 
+    ->Inicializar el objeto: darle valores iniciales a sus atributos o 
+      realizar configuraciones necesarias para que funcione correctamente.
+
+¿Qué error hay? 
+class Persona { 
+    private String nombre; 
+    public void Persona(String n) { 
+        nombre = n; 
+    } 
+} 
+    ->Al ser un constructor, este no debe tener la palabra ´void´ porque deja de ser un constructor
+      al tener un tipo de retorno (cosa que los constructores no deben tener)
+
+¿Cuál modificador permite acceso solo dentro del mismo paquete? 
+    ->El modificador default es el que permite el acceso solo dentro del mismo paquete
+      En Java, si no especificas ningún modificador (como public, private, o protected), 
+      se aplica lo que se llama acceso por defecto, también conocido como default o package-private.
+
+¿Qué es encapsulamiento? 
+    ->Ocultar datos internos y exponer solo lo necesario 
+
+¿Qué palabra clave se usa para herencia? 
+    ->La palabra clave extends
+
+¿Cuál es un ejemplo de polimorfismo?
+    ->Dos métodos con el mismo nombre y distinta firma
+
+¿Qué error hay? 
+abstract class Animal { 
+    public abstract void sonido(); 
+} 
+Animal a = new Animal(); 
+    ->No se pueden istanciar clases abstractas
+
+¿Cuál es la diferencia entre extends e implements? 
+    ->Extends = Hereda comportamiento de una clase.
+      Implements = Cumple un contrato definido por una interfaz.
