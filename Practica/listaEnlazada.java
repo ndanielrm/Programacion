@@ -36,7 +36,7 @@ class LinkedList {
     public void printList() {
         Node current = head;//"current" es una variable temp para recorrer la lista
         while (current != null) {
-            System.out.print(current.value + " --> ");
+            System.out.print(current.value + " -> ");
             current = current.next;
         }
         System.out.println("null");
