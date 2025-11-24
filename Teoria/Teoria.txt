@@ -118,3 +118,20 @@ Figura f = new Circulo(5);
 System.out.println("Área: " + f.area());
 Dibujable d = new Cuadrado(4);
 d.dibujar();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
