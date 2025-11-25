@@ -1,0 +1,197 @@
+- En la clase Computadora, implementar los métodos para asegurar que dos
+  computadoras sean consideradas iguales únicamente si tienen el mismo
+  número de serie.
+
+ @Override
+public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+
+    Computadora otra = (Computadora) obj;
+    return this.numeroSerie.equalsIgnoreCase(otra.numeroSerie);
+}
+
+@Override
+public int hashCode() {
+    return numeroSerie.toUpperCase().hashCode();
+}
+
+Implemente el método buscarComputadora(String numeroSerie) en la
+ clase  InventarioComputadoras.
+ El método debe cumplir con los siguientes requisitos:- El sistema cuenta con dos listas internas: Escritorio y Laptop.- El método debe recibir un número de serie como parámetro.- Debe buscar primero en la lista de escritorios y si encuentra un escritorio
+ cuyo número de serie coincida exactamente con el número recibido, debe
+ retornar ese objeto.- Si no se encontró en escritorios, debe buscar en la lista de laptops y si
+ encuentra una laptop con el número de serie indicado, debe retornar esa
+ laptop.- Si el número de serie no coincide con ningún dispositivo de ambas listas,
+ el método debe retornar null.
+
+ public Computadora buscarComputadora(String numeroSerie) {
+    // Buscar primero en escritorios
+    for (Escritorio escritorio : escritorios) {
+        if (escritorio.getNumeroSerie().equals(numeroSerie)) {
+            return escritorio;
+        }
+    }
+
+    // Si no se encontró en escritorios, buscar en laptops
+    for (Laptop laptop : laptops) {
+        if (laptop.getNumeroSerie().equals(numeroSerie)) {
+            return laptop;
+        }
+    }
+
+    // No se encontró en ninguna de las listas
+    return null;
+}
+
+
+import java.util.*;
+
+class Cereal { }
+
+public class Flakes extends Cereal {
+    public static void main(String[] args) {
+        List<Flakes> c0 = new List<Flakes>();             // línea 6
+        List<Cereal> c1 = new ArrayList<Cereal>();        // línea 7
+        List<Cereal> c2 = new ArrayList<Flakes>();        // línea 8
+        List<Flakes> c3 = new ArrayList<Cereal>();        // línea 9
+        List<Object> c4 = new ArrayList<Flakes>();        // línea 10
+        ArrayList<Cereal> c5 = new ArrayList<Flakes>();   // línea 11
+    }
+}
+
+La linea que NO da error es la 7, esa es la respuesta ya que pide la respuesta INCORRECTA
+
+
+
+¿Qué hace el método void close ( ) de la Clase BufferedWriter?
+- Cierra el flujo de escritura y cierra el archivo.
+- Vuelca el contenido del Buffer al archivo.
+
+
+Dada la imagen adjunta, seleccione la afirmación INCORRECTA.
+
+->a. Únicamente las clases que implementan la interfaz List permiten el uso de iteradores.
+
+b. Un iterador es un objeto que proporciona funcionalidad para recorrer todos los elementos de una colección.
+
+c. Un iterador permite recorrer cualquier tipo de colección hacia adelante utilizando el método next() combinado con el método hasNext() para comprobar si se ha alcanzado el final de la colección.
+
+d. Una colección puede recorrerse tanto con un iterador como con un ciclo for-each. Ambas formas son equivalentes.
+
+
+El método void flush() de la clase BufferedWriter:
+    "Vuelca el contenido del Buffer al archivo."
+
+
+public static void main(String[] args) {
+    try {
+        throw new Error();
+    } catch (Error e) {
+        try {
+            throw new RuntimeException();
+        } catch (Throwable t) {
+            // captura RuntimeException, pero no hace nada
+        }
+    }
+    System.out.println("phew");
+}
+
+El programa imprime "phew"
+
+
+¿Cuál de las sgtes. es una característica de java.lang.Exception?
+    extends Throwable
+
+
+¿Qué hace el método void write ( int car) de la Clase BufferedWriter?
+    Escribe un caracter en el archivo.
+
+
+
+ Implemente en la clase Laptop el método requerido por la interface
+ correspondiente.
+ El cálculo del precio final debe considerar:- Una depreciación del 12% por cada año de uso, debido a que las laptops
+ pierden valor más rápido que las computadoras de escritorio.- Un descuento adicional del 15% relacionado al desgaste típico de
+ portabilidad (batería, pantalla, bisagras, etc.).
+ El método debe:- Calcular los años de uso,- Aplicar la depreciación anual,- Aplicar el descuento por portabilidad,
+ Y retornar el precio final resultante.
+
+public class Laptop extends Computadora implements Precio {
+
+    private double precioBase;
+
+    public Laptop(String marca, int modelo, String numeroSerie, int horasUso, double precioBase) {
+        super(marca, modelo, numeroSerie, horasUso);
+        this.precioBase = precioBase;
+    }
+
+    @Override
+    public String verTipoDeComputadora() {
+        return "Laptop";
+    }
+
+    @Override
+    public double calcularPrecio() {
+        // Calcular años de uso
+        int aniosUso = horasUso / 8760; // aproximando 1 año = 8760 horas
+        // Aplicar depreciación anual del 12%
+        double precioDepreciado = precioBase;
+        for (int i = 0; i < aniosUso; i++) {
+            precioDepreciado *= 0.88; // 100% - 12% = 88%
+        }
+        // Aplicar descuento adicional del 15% por portabilidad
+        precioDepreciado *= 0.85; // 100% - 15% = 85%
+        
+        return precioDepreciado;
+    }
+}
+
+
+
+Pregunta: indique cuál de las siguientes definiciones de un método m, que lanza IOException, y que devuelve void, es correcta:
+
+a.  void m() throws IOException {}
+b.  void m() throw IOException {}
+c.  void m(void) throws IOException {}
+d.  void m() {} throws IOException
+
+Respuesta correcta:
+a. void m() throws IOException {}
+
+
+¿A qué Clase pertenece la definición : "Los caracteres escritos se transforman previamente en bytes"?
+-> a. OutputStreamWriter 
+ b. InputStreamReader 
+ c. PublicStreamReader
+
+
+public class test {
+    public static void main(String args[]) {
+        int i = 1, j = 1;
+        try {
+            i++;     // i = 2
+            j--;     // j = 0
+            if(i == j)   // 2 == 0 → falso
+                i++;
+        }
+        catch(ArithmeticException e) {
+            System.out.print(0);
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+            System.out.print(1);
+        }
+        catch(Exception e) {
+            System.out.print(2);
+        }
+        finally {
+            System.out.print(3);
+        }
+        System.out.print(",4");
+    }
+}
+ Salida por consola; 3, 4
+
+
+
+ 
