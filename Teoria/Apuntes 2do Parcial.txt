@@ -1,0 +1,249 @@
+Aquí tienes un **apunte completo, claro y organizado** sobre todos los temas solicitados. Está pensado como material de estudio o repaso.
+
+---
+
+# **Apunte: Tipos Abstractos de Datos, Colecciones en Java y Manejo de Excepciones**
+
+---
+
+# **1. Tipos Abstractos de Datos (TAD)**
+
+Un **Tipo Abstracto de Dato (TAD)** es un modelo matemático que define un conjunto de **valores** y un conjunto de **operaciones** que pueden aplicarse sobre esos valores, ocultando la implementación interna.
+Ejemplos: pila, cola, lista, árbol, grafo, conjunto, mapa.
+
+**Características:**
+
+* Abstracción del comportamiento, no de la implementación.
+* Define *qué hace* una estructura, no *cómo lo hace*.
+* Permite intercambiar implementaciones sin cambiar el código que las usa.
+
+---
+
+# **2. Listas como TAD**
+
+Una **lista** es una colección ordenada de elementos donde cada elemento ocupa una posición.
+
+### **2.1 Lista estática**
+
+* Implementada típicamente con **arreglos (arrays)**.
+* Tamaño fijo.
+* Acceso rápido por índice O(1).
+* Inserciones/eliminaciones costosas porque se deben mover elementos.
+
+### **2.2 Lista dinámicas (listas enlazadas simples)**
+
+* Los elementos se almacenan en **nodos** enlazados entre sí.
+* Tamaño variable.
+* Inserciones/eliminaciones eficientes O(1) si se conoce el nodo.
+* Acceso secuencial (no aleatorio) O(n).
+
+### **2.3 Lista circular**
+
+* Variante de lista enlazada donde el último nodo apunta al primero.
+* Ideal para recorridos cíclicos (colas circulares, sistemas de turnos).
+
+### **2.4 Lista doblemente enlazada**
+
+* Cada nodo tiene **puntero al siguiente y al anterior**.
+* Facilita recorrido en ambos sentidos.
+* Inserciones/eliminaciones eficientes en cualquier posición.
+
+---
+
+# **3. Colecciones en Java (Java Collections Framework)**
+
+El **Java Collections Framework (JCF)** es un conjunto de interfaces e implementaciones para manejar estructuras de datos de forma unificada.
+
+---
+
+## **3.1 Interfaces principales**
+
+### **List**
+
+* Colección **ordenada**.
+* Permite elementos duplicados.
+* Acceso por índice.
+* Ejemplos: `ArrayList`, `LinkedList`.
+
+### **Set**
+
+* No permite elementos duplicados.
+* No garantiza orden (salvo en implementaciones específicas).
+* Ejemplos: `HashSet`, `TreeSet`.
+
+---
+
+## **3.2 Implementaciones comunes**
+
+### **ArrayList**
+
+* Basado en **array dinámico**.
+* Acceso rápido por índice.
+* Inserciones/eliminaciones más lentas en el medio.
+* Muy usado.
+
+### **LinkedList**
+
+* Lista doblemente enlazada.
+* Inserciones/eliminaciones eficientes en extremos.
+* Acceso secuencial más lento.
+
+### **HashSet**
+
+* Implementado con **tablas hash**.
+* No mantiene orden.
+* Operaciones muy rápidas (add, contains, remove).
+
+### **TreeSet**
+
+* Basado en un árbol rojo-negro.
+* Mantiene los elementos **ordenados**.
+* Requiere que los elementos sean comparables.
+
+### **HashMap**
+
+* Mapa clave–valor implementado con **hashing**.
+* Claves únicas.
+* Búsqueda y acceso muy rápidos.
+
+---
+
+# **4. Iteradores, ordenamiento y comparación**
+
+### **Iteradores (`Iterator`)**
+
+Permiten recorrer colecciones de manera uniforme.
+
+Métodos principales:
+
+* `hasNext()`
+* `next()`
+* `remove()`
+
+### **Ordenamiento**
+
+Java usa `Collections.sort()` para ordenar listas (merge sort).
+
+### **Comparación de objetos**
+
+#### **equals()**
+
+* Indica si dos objetos son "lógicamente iguales".
+
+#### **hashCode()**
+
+* Usado para estructuras hash (HashMap, HashSet).
+* Debe cumplir:
+  Si `a.equals(b)` es **true**, entonces `a.hashCode() == b.hashCode()`.
+
+---
+
+# **5. PriorityQueue y colecciones genéricas**
+
+### **PriorityQueue**
+
+* Cola con prioridad.
+* El elemento con **mayor prioridad** es el primero en salir.
+* Basada en un **heap binario**.
+* Requiere elementos comparables o un `Comparator`.
+
+### **Colecciones genéricas**
+
+Permiten definir un tipo parámetrizado:
+
+```java
+ArrayList<String> lista = new ArrayList<>();
+```
+
+Ventajas:
+
+* Seguridad de tipos
+* Evita casting
+* Mejor legibilidad
+
+---
+
+# **6. Manejo de excepciones y errores en Java**
+
+## **6.1 Diferencia entre errores y excepciones**
+
+### **Errores (`Error`)**
+
+* Problemas graves del entorno.
+* No deben manejarse en código.
+* Ejemplo: `OutOfMemoryError`.
+
+### **Excepciones (`Exception`)**
+
+* Problemas recuperables.
+* Pueden ser manejadas por el programador.
+
+Dos tipos:
+
+* **Checked exceptions**: deben manejarse obligatoriamente
+  Ej: `IOException`, `SQLException`.
+* **Unchecked exceptions**: heredan de `RuntimeException`, no obligatorias
+  Ej: `NullPointerException`, `IndexOutOfBoundsException`.
+
+---
+
+# **7. Jerarquía de excepciones en Java**
+
+```
+                Throwable
+               /        \
+           Error      Exception
+                           \
+                     RuntimeException
+```
+
+---
+
+# **8. Uso de try, catch, finally**
+
+```java
+try {
+    // Código que puede generar una excepción
+} catch (TipoExcepcion e) {
+    // Manejo de la excepción
+} finally {
+    // Se ejecuta siempre, ocurra o no la excepción
+}
+```
+
+---
+
+# **9. Generación de excepciones con throw**
+
+```java
+throw new IllegalArgumentException("Valor incorrecto");
+```
+
+Se usa para **lanzar una excepción manualmente**.
+
+---
+
+# **10. Propagación de excepciones con throws**
+
+```java
+public void leerArchivo() throws IOException {
+    // El método indica que puede lanzar esta excepción
+}
+```
+
+Se usa para **propagar** la excepción al método que llama.
+
+---
+
+# **11. Excepciones personalizadas**
+
+```java
+public class MiExcepcion extends Exception {
+    public MiExcepcion(String mensaje) {
+        super(mensaje);
+    }
+}
+```
+
+Usadas para modelar errores específicos del dominio de la aplicación.
+
